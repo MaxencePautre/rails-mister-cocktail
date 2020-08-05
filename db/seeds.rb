@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+## On veut parser la liste Json pour créer autant d'objet que la liste en contient
+
+require 'json'
+require 'open-uri'
+#require 'pry-byebug'
+puts "cleaning database"
+Ingredient.destroy_all
+
+puts "creating ingredients"
+
+url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+ingredients_serialized = open(url).read
+ingredients = JSON.parse(ingredients_serialized)
+ingredients["drinks"].each do | ingredient |
+    Ingredient.create(name: ingredient["strIngredient1"])
+  end
+
+  pry-byebug
+
+  puts "finished"
