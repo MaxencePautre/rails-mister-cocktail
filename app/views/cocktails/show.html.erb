@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-6 offset-3">
+    <div class="card">
+      <div class="card-body">
+    <%= "#{@cocktail.name}:" %>
+    <br>
+      <%= "#{@dose.ingredient.name} : #{@dose.description}" %>
+      <br>
+    <br>
+      </div>
+    </div>
+  </div>
+  <%= link_to "liste des cocktails", cocktails_path %>
+  <%= link_to "Supprimer", cocktail_path(@cocktail), method: :delete, data: {confirm: "t'es sur?"} %>
+</div>

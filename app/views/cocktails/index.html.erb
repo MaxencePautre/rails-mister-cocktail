@@ -1,1 +1,14 @@
-<span> hello world</span>
+<div class="container">
+  <div class="col-6 offset-3">
+    <% @cocktails.each do |cocktail| %>
+      <div class = "card  mb-3">
+        <div class="card-body text-center">
+          <%= cocktail.name%>
+        </div>
+        <%= link_to "voir le détail du cocktail", cocktail_path(cocktail), class: "text-center mb-2"  %>
+        <%= link_to "ajouter ou modifier des ingrédients", new_cocktail_dose_path(cocktail) %>
+      </div>
+    <% end %>
+  </div>
+  <%=link_to "nouveau cocktail", new_cocktail_path %>
+</div>
